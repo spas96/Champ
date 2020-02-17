@@ -1,0 +1,56 @@
+@charset "UTF-8";
+//
+//  mixin,extendで使用する
+//  using mixin and extend
+//
+// 文字サイズ
+// font size
+@mixin fs($fontSize, $baseFontSize:10) {
+    font-size: #{$fontSize / $baseFontSize}em;
+}
+
+// example:
+// @include fs(15);
+// @include fs(20, 13);
+// ※第二引数のサイズをベースとして20pxになるよう計算された値が出力される
+//%にしたい場合は、
+//@mixin fs($fontSize, $baseFontSize:10){
+//font-size: percentage($fontSize / $baseFontSize);
+//}
+//に変更
+// clearfix（float解除）
+%cf {
+    @if $support-ie6 or $support-ie7 {
+        *zoom: 1;
+    }
+    &:after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}
+
+// example:
+// @extend %cf;
+// clearfix（float解除）
+@mixin cf {
+    @if $support-ie6 or $support-ie7 {
+        *zoom: 1;
+    }
+    &:after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}
+
+
+/*------------------------------------------------------------
+	Mixin
+------------------------------------------------------------*/
+
+@mixin sp {
+    @media only screen and (max-width: 992px) {
+        @content;
+    }
+}

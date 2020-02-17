@@ -1,0 +1,21 @@
+/*------------------------------------------------------------
+	Layout
+------------------------------------------------------------*/
+
+body {
+    min-width: 1120px;
+    margin: 0 auto;
+    background-color: #ebebeb;
+    @include sp {
+        min-width: 768px;
+    }
+}
+
+.l-container {
+    width: 1100px;
+    margin: 0 auto;
+    @include sp {
+        margin: 0 30px;
+        width: auto;
+    }
+}

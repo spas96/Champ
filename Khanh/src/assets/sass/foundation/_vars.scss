@@ -1,0 +1,16 @@
+@charset "UTF-8";
+// HTML5か否か
+$use-html5: true;
+// サポートブラウザの設定
+$support-ie6: false;
+$support-ie7: false;
+$support-ie8: false;
+$support-ie9: false;
+$support-mozilla: true;
+$support-webkit: true;
+$support-opera: false;
+// ベンダープレフィックスの設定
+$set_prefix: -webkit-,
+-moz-,
+-ms-,
+'';
