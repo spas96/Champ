@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Champ</title>
+    <!-- Favicon-->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Waves Effect Css -->
+    <link href="../plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="../css/themes/all-themes.css" rel="stylesheet" />
+</head>
+
+<body class="p-login">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header d-flex justify-content-center">
+                <div class="navbar-brand">
+                    <a href="../index.html"><img src="../images/Logo.jpg" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-7 text-center">
+                <div id="login" class="login-box">
+                    <h2 id="login_h">STAFF LOGIN</h2>
+
+                    <div class="input-container">
+                        <i class="fa fa-user icon"></i>
+                        <input class="input-field" type="text" placeholder="Username" id="username_id">
+                    </div>
+                    <div class="input-container">
+                        <i class="fa fa-unlock-alt icon"></i>
+                        <input class="input-field" type="password" placeholder="Password" id="password_id">
+                    </div>
+
+                    <p class="error">Aasdasd asdasda ss asd.</p>
+
+                    <input type="submit" class="button" value="LOGIN" onclick="login()">
+                    <div class="mar">
+                        <a class="log_l" onclick="reset_pass_go()">Forgot your password?</a>
+                    </div>
+                    <div class="mar">
+                        <a class="log_l" onclick="req_access_go()">Request access.</a>
+                    </div>
+                </div>
+                <div id="request_access" class="requestaccess-box">
+                    <h2 id="login_h">REQUEST STAFF ACCESS</h2>
+
+                    <div class="input-container">
+                        <i class="fa fa-user icon"></i>
+                        <input class="input-field" type="text" placeholder="Full Name" id="user_names">
+                    </div>
+
+                    <p class="error">Aasdasd asdasda ss asd.</p>
+
+                    <input type="submit" class="button" onclick="request_access()" value="REQUEST ACCESS">
+                    <br>
+                    <a class="note"><i>Note:If you already requested an account, please enter your full name and click on 'Request Access' button again. If access if given you will be able to register.</i></a></br>
+                    </br>
+                    <a class="log_l" onclick="login_go()">Already have an account? Login.</a>
+                </div>
+                <div id="register" class="register-box">
+                    <h2 id="login_h">STAFF REGISTRATION</h2>
+                    <h3 class="name_h">Name Surname</h3>
+
+                    <div class="input-container">
+                        <i class="fa fa-user icon"></i>
+                        <input class="input-field" type="text" placeholder="Username" id="username_id_reg">
+                    </div>
+                    <div class="input-container">
+                        <i class="fa fa-unlock-alt icon"></i>
+                        <input class="input-field" type="password" placeholder="Password" id="password_id_reg">
+                    </div>
+                    <div class="input-container">
+                        <i class="fa fa-retweet icon"></i>
+                        <input class="input-field" type="password" placeholder="Memorable Word" id="password_id_reg">
+                    </div>
+
+                    <p class="error">Aasdasd asdasda ss asd.</p>
+
+                    <input type="submit" class="button" value="SIGNUP">
+                    <br>
+                    <a class="log_l" onclick="login_go()">Already have an account? Login.</a>
+                </div>
+                <div id="reset_pass" class="reset-box">
+                    <h2 id="login_h">RESET PASSWORD</h2>
+
+                    <div class="input-container">
+                        <i class="fa fa-user icon"></i>
+                        <input class="input-field" type="text" placeholder="Username" id="username_id">
+                    </div>
+                    <div class="input-container">
+                        <i class="fa fa-retweet icon"></i>
+                        <input class="input-field" type="password" placeholder="Memorable Word" id="password_id">
+                    </div>
+                    <div class="input-container" id="new_pass_h">
+                        <i class="fa fa-unlock-alt icon"></i>
+                        <input class="input-field" type="password" placeholder="Set New Password" id="new_pass">
+                    </div>
+
+                    <p class="error">Aasdasd asdasda ss asd.</p>
+
+                    <input type="submit" class="button" value="FIND USER">
+                    <!-- If found change to RESET and show hidden field -->
+                    <br>
+                    <a class="log_l" onclick="login_go()">Already have an account? Login.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Jquery Core Js -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="../plugins/node-waves/waves.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../js/admin.js"></script>
+
+    <script src="../js/pages/login.js"></script>
+</body>
+
+</html>
