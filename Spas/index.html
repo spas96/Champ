@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Meals</title>
+   <link rel="icon" href="Images/FavIcon.png">
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+   
+   <script type="text/javascript" src="firebase_connect.js"></script>
+   <script type="text/javascript" src="index.js"></script>
+   
+   
+
+   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+   
+   <script>
+      if(localStorage.getItem("name")==0){
+         window.location.href = "login.html";
+      }
+   </script>
+
+</head>
+
+<body onload="user();database();done();get_meals(database())">
+   <div id="loader"></div>
+   <header>
+      <div align="left" id="h_left">
+         <img src="Images/logo.png" alt="Champ Logo" id="logo2">
+      </div>
+      <div align="center" id="h_center">
+         <div class="dropdown">
+            <h2  class="dropbtn">Meals <i class="fa fa-chevron-down"></i></h2>
+            <div align="center" class="dropdown-content-mid">
+               <a class="task-chose">Check List</a>
+               <a class="task-chose">Some</a>
+               <a class="task-chose">Stuff</a>
+               <a class="task-chose">In Menu</a>
+            </div>
+         </div>
+      </div>
+      <div align="right" id="h_right">
+         <div class="dropdown">
+            <h3 class="dropbtn" id="user_name"></h3>
+            <div align="center" class="dropdown-content">
+               <a class="user-dd" href="#"><i class="fa fa-cog "></i> Settings</a>
+               
+               <a class="user-dd" id="logout" href="#"  onclick="logout(database());"><i class="fa fa-sign-out"></i> Logout</a>
+            </div>
+         </div>
+      </div>
+   </header>
+   
+   <div id="checklist">
+         <div id="done"><h2 id="done_h"></h2></div>
+   </div>
+   
+   <div id="meal_creator" align="center">
+         <div id="left"><h2 id="done_h">Add New</h2>
+            <div id="left-left">
+               <input class="input-field2" type="text" placeholder="Meal Name: Shredded Chicken" id="meal_name">
+               <input class="input-field2" type="text" onkeydown="nosymbol(event)" placeholder="Ingridient Name: Chicken Brest" id="ingr_name">
+               
+               <div>
+                  <input class="input-field3" type="text" placeholder="Amaunt: 100" id="ingr_amaunt">
+                  <input class="input-field3" type="text" placeholder="Units: g" id="ingr_units">
+                  <input type="submit" class="button_add" value="ADD" id="add_ingr" onclick="add_ingr()">
+               </div>
+               <textarea class="textarea" id="ingr_all" rows="7" placeholder="No ingredients added!&#10;New ingredients will be shown here once added!"   readonly ></textarea>
+               
+               <input class="input-field4" type="text" placeholder="Preparation Method: Marinate" id="prep_method">
+               <input type="submit" class="button_add" id="add_prep" value="ADD" onclick="add_prep()">
+               <textarea class="textarea" id="prep_all" rows="7" placeholder="No preparation added!&#10;New preparation methods will be shown here once added!"   readonly ></textarea>
+               
+               
+            </div>
+            <div id="left-right">
+               <input class="input-field2" type="text" placeholder="Cooking Method: Bake" id="cook_method">
+               <input class="input-field3" type="text" placeholder="Time in Min: 30" id="cook_time">
+               <input class="input-field3" type="text" placeholder="Temp. in °C: 160" id="cook_temp">
+               <input type="submit" class="button_add" id="add_cook" value="ADD" onclick="add_cook()">
+               <textarea class="textarea" id="cook_all" rows="7" placeholder="No cooking method added!&#10;New cooking methods will be shown here once added!"   readonly ></textarea>
+               
+               
+               <div>
+                  <input class="input-field4" type="text" placeholder="Directions: Season chicken with salt" id="dir">
+                  <input type="submit" class="button_add" id="add_dir" value="ADD" onclick="add_dir()">
+               </div>
+               <textarea class="textarea" id="dir_all" rows="7" placeholder="No directions added!&#10;New directions will be shown here once added!"   readonly ></textarea>
+               
+               <div id="labels">
+                  <div class="ll" onclick="selectt(0);">
+                     <span class="fa-stack">
+                        <i id="meat" class="fa fa-circle-o fa-stack-2x gr"></i>
+                     </span>
+                     Meat/Fish
+                  </div>
+                  <div class="ll" onclick="selectt(1);">
+                     <span class="fa-stack">
+                        <i id="vegetable" class="fa fa-circle-o fa-stack-2x gr"></i>
+                     </span>
+                     Vegetable
+                  </div>
+                  <div class="ll" onclick="selectt(2);">
+                     <span class="fa-stack">
+                        <i id="spice" class="fa fa-circle-o fa-stack-2x gr"></i>
+                     </span>
+                     Sauce
+                  </div>
+               </div>
+            </div>
+            
+            <input type="submit" id="add_meal" class="button_add" value="ADD NEW RECIPE" onclick="add_meal(database())">
+         </div>
+         <div id="right"><h2 id="done_h">Current Meals</h2>
+            <div id="right-sub">
+               
+            </div>
+         </div>
+   </div>
+   
+   
+</body>
+
+</html>
