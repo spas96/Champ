@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Champ</title>
+   <link rel="icon" href="Images/FavIcon.png">
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+   
+   <script type="text/javascript" src="firebase_connect.js"></script>
+   <script type="text/javascript" src="index.js"></script>
+   <script type="text/javascript" src="calendar.js"></script>
+   
+   
+
+   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+   
+   <script>
+      if(localStorage.getItem("name")==0){
+         window.location.href = "login.html";
+      }
+   </script>
+
+</head>
+
+<body onload="user();calendar_init(database());">
+   <div id="loader"></div>
+   <header>
+      <div align="left" id="h_left">
+         <img src="Images/logo.png" alt="Champ Logo" id="logo2">
+      </div>
+      <div align="center" id="h_center">
+         <div class="dropdown">
+            <h2  class="dropbtn">Select Meals<i class="fa fa-chevron-down"></i></h2>
+            <div align="center" class="dropdown-content-mid">
+               <a class="task-chose">Check List</a>
+               <a class="task-chose">Select Meals</a>
+               <a class="task-chose">Stuff</a>
+               <a class="task-chose">In Menu</a>
+            </div>
+         </div>
+      </div>
+      <div align="right" id="h_right">
+         <div class="dropdown">
+            <h3 class="dropbtn" id="user_name"></h3>
+            <div align="center" class="dropdown-content">
+               <a class="user-dd" href="#"><i class="fa fa-cog "></i> Settings</a>
+               
+               <a class="user-dd" id="logout" href="#"  onclick="logout(database());"><i class="fa fa-sign-out"></i> Logout</a>
+            </div>
+         </div>
+      </div>
+   </header>
+   <div id="content">
+      <div id="left">
+         <div id="calendar">
+            <div class="top_cal">
+               <div class="m_side" onclick="change_month(0,database())">◄</div>
+               <div id="m_center"></div>
+               <div class="m_side" onclick="change_month(1,database())">►</div>
+            </div>
+            <div class="top_cal">
+               <div id="weekdays">
+                  <div>Monday</div>
+                  <div>Tuesday</div>
+                  <div>Wednesday</div>
+                  <div>Thursday</div>
+                  <div>Friday</div>
+                  <div>Saturday</div>
+                  <div>Sunday</div>
+               </div>
+            </div>
+            <div id="days">
+               <div class="days" id="pos1"></div><div class="days" id="pos2"></div><div class="days" id="pos3"></div><div class="days" id="pos4"></div><div class="days" id="pos5"></div><div class="days" id="pos6"></div><div class="days" id="pos7"></div>
+               <div class="days" id="pos8"></div><div class="days" id="pos9"></div><div class="days" id="pos10"></div><div class="days" id="pos11"></div><div class="days" id="pos12"></div><div class="days" id="pos13"></div><div class="days" id="pos14"></div>
+               <div class="days" id="pos15"></div><div class="days" id="pos16"></div><div class="days" id="pos17"></div><div class="days" id="pos18"></div><div class="days" id="pos19"></div><div class="days" id="pos20"></div><div class="days" id="pos21"></div>
+               <div class="days" id="pos22"></div><div class="days" id="pos23"></div><div class="days" id="pos24"></div><div class="days" id="pos25"></div><div class="days" id="pos26"></div><div class="days" id="pos27"></div><div class="days" id="pos28"></div>
+               <div class="days" id="pos29"></div><div class="days" id="pos30"></div><div class="days" id="pos31"></div><div class="days" id="pos32"></div><div class="days" id="pos33"></div><div class="days" id="pos34"></div><div class="days" id="pos35"></div>
+               <div class="days" id="pos36"></div><div class="days" id="pos37"></div>
+            </div>
+         </div>
+      </div>
+      
+      <div id="right" align="center" style="margin-top:200px;">
+         <h1 id="tasks"></h1>
+         <h2 id="sel_date"></h2>
+         <div id="meals">
+            <div id="meals_left">
+               <h2>All Meals</h2>
+               <div class="sub" id="sub_left" align="left">
+               </div>
+            </div>
+            <div id="meals_center">
+               <button id="b_left" class="button_arr" onclick="remove(database());"><</button>
+               <button id="b_right" class="button_arr" onclick="add(database());">></button>
+            </div>
+            <div id="meals_right">
+               <h2>Selected Meals</h2>
+               <div class="sub" id="sub_right" align="left">
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+   
+</body>
+
+</html>
