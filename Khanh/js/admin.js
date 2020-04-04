@@ -1,3 +1,191 @@
+//Func for Index HTML get username
+function user(database) {
+    document.getElementById("user_name").innerHTML = localStorage.getItem("name");
+}
+// Func for index HTML get Meal
+function get_meals(database) {
+    document.getElementById("loader").style.display = "block";
+    var ref = database.database().ref("Meals");
+
+
+    ref.on('value', function(snapshot) {
+        if (snapshot.numChildren() != 0) {
+            document.getElementById("right-sub").innerHTML = "";
+            snapshot.forEach(function(childSnapshot) {
+                var name = childSnapshot.key;
+
+                var ingridient = [];
+                var amount = [];
+                var units = [];
+
+                var preparation = [];
+
+                var direction = [];
+
+                var cooking_method = [];
+                var cooking_time = [];
+                var cooking_temp = [];
+
+                var i = 0;
+
+                childSnapshot.child("Ingridients").forEach(function(childSnapshot1) {
+                    ingridient[i] = childSnapshot1.val();
+                    i++;
+                });
+                i = 0;
+                childSnapshot.child("Amount").forEach(function(childSnapshot1) {
+                    amount[i] = childSnapshot1.val();
+                    i++;
+                });
+                i = 0;
+                childSnapshot.child("Units").forEach(function(childSnapshot1) {
+                    units[i] = childSnapshot1.val();
+                    i++;
+                });
+                if (childSnapshot.child("Cooking_method").numChildren() != 0) {
+                    i = 0;
+                    childSnapshot.child("Cooking_method").forEach(function(childSnapshot1) {
+                        cooking_method[i] = childSnapshot1.val();
+                        i++;
+                    });
+                }
+
+                if (childSnapshot.child("Cooking_temperature").numChildren() != 0) {
+                    i = 0;
+                    childSnapshot.child("Cooking_temperature").forEach(function(childSnapshot1) {
+                        cooking_temp[i] = childSnapshot1.val();
+                        i++;
+                    });
+                }
+
+                if (childSnapshot.child("Preparation_method").numChildren() != 0) {
+                    i = 0;
+                    childSnapshot.child("Preparation_method").forEach(function(childSnapshot1) {
+                        preparation[i] = childSnapshot1.val();
+                        i++;
+                    });
+                }
+                if (childSnapshot.child("Directions").numChildren() != 0) {
+                    i = 0;
+                    childSnapshot.child("Directions").forEach(function(childSnapshot1) {
+                        direction[i] = childSnapshot1.val();
+                        i++;
+                    });
+                }
+
+                var main_div = document.getElementById("right-sub");
+                var new_div = document.createElement("div");
+                new_div.classList.add("meal");
+                new_div.setAttribute("align", "left");
+
+                var meal_name = document.createElement("H4");
+                var t = document.createTextNode(name);
+                meal_name.appendChild(t);
+                meal_name.setAttribute("align", "center");
+
+                var b = document.createElement("b");
+                t = document.createTextNode("Ingridients");
+                b.appendChild(t);
+
+                var p;
+
+                new_div.appendChild(meal_name);
+                new_div.appendChild(b);
+
+                i = 0;
+                while (i < ingridient.length) {
+                    p = document.createElement("p");
+                    t = document.createTextNode(i + 1 + ". " + ingridient[i] + " - " + amount[i] + units[i]);
+                    p.appendChild(t);
+                    new_div.appendChild(p);
+
+                    i++;
+                }
+
+                if (preparation.length != 0) {
+                    b = document.createElement("b");
+                    t = document.createTextNode("Preparation");
+                    b.appendChild(t);
+                    new_div.appendChild(b);
+
+                    i = 0;
+                    while (i < preparation.length) {
+                        p = document.createElement("p");
+                        t = document.createTextNode(i + 1 + ". " + preparation[i]);
+                        p.appendChild(t);
+                        new_div.appendChild(p);
+
+                        i++;
+                    }
+                }
+                if (direction.length != 0) {
+                    b = document.createElement("b");
+                    t = document.createTextNode("Directions");
+                    b.appendChild(t);
+                    new_div.appendChild(b);
+
+                    i = 0;
+                    while (i < direction.length) {
+                        p = document.createElement("p");
+                        t = document.createTextNode(i + 1 + ". " + direction[i]);
+                        p.appendChild(t);
+                        new_div.appendChild(p);
+
+                        i++;
+                    }
+                }
+
+
+                if (cooking_method.length != 0) {
+                    b = document.createElement("b");
+                    t = document.createTextNode("Cooking Method");
+                    b.appendChild(t);
+                    new_div.appendChild(b);
+
+                    i = 0;
+                    while (i < cooking_method.length) {
+                        p = document.createElement("p");
+                        t = document.createTextNode(i + 1 + ". " + cooking_method[i]);
+                        p.appendChild(t);
+                        if (childSnapshot.child("Cooking_time").numChildren() != 0) {
+                            i = 0;
+                            childSnapshot.child("Cooking_time").forEach(function(childSnapshot1) {
+                                if (parseInt(childSnapshot1.key) == i + 1) {
+                                    t = document.createTextNode(" for " + childSnapshot1.val() + " min");
+                                    p.appendChild(t);
+                                }
+                                i++;
+                            });
+                        }
+                        if (childSnapshot.child("Cooking_temperature").numChildren() != 0) {
+                            i = 0;
+                            childSnapshot.child("Cooking_temperature").forEach(function(childSnapshot1) {
+                                if (parseInt(childSnapshot1.key) == i + 1) {
+                                    t = document.createTextNode(" at " + childSnapshot1.val());
+                                    if (!isNaN(childSnapshot1.val())) {
+                                        t.nodeValue += " °C";
+                                    }
+                                    p.appendChild(t);
+                                }
+                                i++;
+                            });
+                        }
+                        new_div.appendChild(p);
+
+                        i++;
+                    }
+                }
+
+                main_div.appendChild(new_div);
+                document.getElementById("loader").style.display = "none";
+
+            });
+        } else {
+            document.getElementById("loader").style.display = "none";
+        }
+    });
+
+}
 if (typeof jQuery === "undefined") {
     throw new Error("jQuery plugins need to be before this file");
 }

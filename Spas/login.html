@@ -1,113 +1,116 @@
 <!DOCTYPE html>
 <html>
-<head>
-   <meta charset="UTF-8">
-   <title>Champ</title>
-   <link rel="icon" href="Images/FavIcon.png">
-   <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   <script type="text/javascript" src="login.js"></script>
-   <script type="text/javascript" src="firebase_connect.js"></script>
-   
 
-   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Champ</title>
+    <link rel="icon" href="Images/FavIcon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="login.js"></script>
+    <script type="text/javascript" src="firebase_connect.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
 
 </head>
 
 <body onload="database();">
-   <div id="loader"></div>
-   <header>
-      <img src="Images/logo.png" alt="Champ Logo" id="logo" onclick="">
-   </header>
-   
-   <div class="box">
-      <div id="login">
-         <h1 id="login_h">STAFF LOGIN</h1>
-         
-         <div class="input-container">
-            <i class="fa fa-envelope icon"></i>
-            <input class="input-field" type="text" placeholder="Email" id="email_id">
-         </div>
-         <div class="input-container">
-            <i class="fa fa-unlock-alt icon"></i>
-            <input class="input-field" type="password" placeholder="Password" id="password_id">
-         </div>
-         
-         <p class="error"></p>
-         
-         <input type="submit" class="button" value="LOGIN" onclick="login(database())">
-         <div class="mar">
-            <a class="log_l" onclick="reset_pass_go()">Forgot your password?</a>
-         </div>
-         <div class="mar" >
-            <a class="log_l" onclick="req_access_go()">Request access.</a>
-         </div>
-      </div>
-      <div id="request_access">
-         <h1 id="login_h">REQUEST STAFF ACCESS</h1>
-         
-         <div class="input-container">
-            <i class="fa fa-user icon"></i>
-            <input class="input-field" type="text" placeholder="Name: John Smith" id="user_names">
-         </div>
-         
-         <p class="error"></p>
-         
-         <input type="submit" class="button" onclick="request_access()" value="REQUEST ACCESS">
-         <br>
-         <a class="note"><i>Note:If you already requested an account, please enter your full name and click on 'Request Access' button again. If access if given you will be able to register.</i></a></br></br>
-         <a class="log_l" onclick="login_go()">Already have an account? Login.</a>
-      </div>
-      <div id="register">
-         <h1 id="login_h">STAFF REGISTRATION</h1>
-         <h3 class="name_h">Name Surname</h3>
-         
-         <div class="input-container">
-            <i class="fa fa-envelope icon"></i>
-            <input class="input-field" type="text" placeholder="Email" id="email_id_reg">
-         </div>
-         <div class="input-container">
-            <i class="fa fa-unlock-alt icon"></i>
-            <input class="input-field" type="password" placeholder="Password" id="password_id_reg">
-         </div>
-         <div class="input-container">
-            <i class="fa fa-retweet icon"></i>
-            <input class="input-field" type="password" placeholder="Memorable Word" id="password_id_reg">
-         </div>
-         
-         <p class="error"></p>
-         
-         <input type="submit" class="button" value="SIGNUP">
-         <br>
-         <a class="log_l" onclick="login_go()">Already have an account? Login.</a>
-      </div>
-      <div id="reset_pass">
-         <h1 id="login_h">RESET PASSWORD</h1>
-         
-         <div class="input-container">
-            <i class="fa fa-envelope icon"></i>
-            <input class="input-field" type="text" placeholder="Email" id="email_id_res">
-         </div>
-         <div class="input-container">
-            <i class="fa fa-retweet icon"></i>
-            <input class="input-field" type="password" placeholder="Memorable Word" id="password_id_res">
-         </div>
-         <div class="input-container" id="new_pass_h">
-            <i class="fa fa-unlock-alt icon"></i>
-            <input class="input-field" type="password" placeholder="Set New Password" id="new_pass">
-         </div>
-         
-         <p class="error"></p>
-         
-         <input type="submit" class="button" value="FIND USER"> <!-- If found change to RESET and show hidden field -->
-         <br>
-         <a class="log_l" onclick="login_go()">Already have an account? Login.</a>
-      </div>
-   </div>
-   
-   
+    <div id="loader"></div>
+    <header>
+        <img src="Images/logo.png" alt="Champ Logo" id="logo" onclick="">
+    </header>
+
+    <div class="box">
+        <div id="login">
+            <h1 id="login_h">STAFF LOGIN</h1>
+
+            <div class="input-container">
+                <i class="fa fa-envelope icon"></i>
+                <input class="input-field" type="text" placeholder="Email" id="email_id">
+            </div>
+            <div class="input-container">
+                <i class="fa fa-unlock-alt icon"></i>
+                <input class="input-field" type="password" placeholder="Password" id="password_id">
+            </div>
+
+            <p class="error"></p>
+
+            <input type="submit" class="button" value="LOGIN" onclick="login(database())">
+            <div class="mar">
+                <a class="log_l" onclick="reset_pass_go()">Forgot your password?</a>
+            </div>
+            <div class="mar">
+                <a class="log_l" onclick="req_access_go()">Request access.</a>
+            </div>
+        </div>
+        <div id="request_access">
+            <h1 id="login_h">REQUEST STAFF ACCESS</h1>
+
+            <div class="input-container">
+                <i class="fa fa-user icon"></i>
+                <input class="input-field" type="text" placeholder="Name: John Smith" id="user_names">
+            </div>
+
+            <p class="error"></p>
+
+            <input type="submit" class="button" onclick="request_access()" value="REQUEST ACCESS">
+            <br>
+            <a class="note"><i>Note:If you already requested an account, please enter your full name and click on 'Request Access' button again. If access if given you will be able to register.</i></a></br>
+            </br>
+            <a class="log_l" onclick="login_go()">Already have an account? Login.</a>
+        </div>
+        <div id="register">
+            <h1 id="login_h">STAFF REGISTRATION</h1>
+            <h3 class="name_h">Name Surname</h3>
+
+            <div class="input-container">
+                <i class="fa fa-envelope icon"></i>
+                <input class="input-field" type="text" placeholder="Email" id="email_id_reg">
+            </div>
+            <div class="input-container">
+                <i class="fa fa-unlock-alt icon"></i>
+                <input class="input-field" type="password" placeholder="Password" id="password_id_reg">
+            </div>
+            <div class="input-container">
+                <i class="fa fa-retweet icon"></i>
+                <input class="input-field" type="password" placeholder="Memorable Word" id="password_id_reg">
+            </div>
+
+            <p class="error"></p>
+
+            <input type="submit" class="button" value="SIGNUP">
+            <br>
+            <a class="log_l" onclick="login_go()">Already have an account? Login.</a>
+        </div>
+        <div id="reset_pass">
+            <h1 id="login_h">RESET PASSWORD</h1>
+
+            <div class="input-container">
+                <i class="fa fa-envelope icon"></i>
+                <input class="input-field" type="text" placeholder="Email" id="email_id_res">
+            </div>
+            <div class="input-container">
+                <i class="fa fa-retweet icon"></i>
+                <input class="input-field" type="password" placeholder="Memorable Word" id="password_id_res">
+            </div>
+            <div class="input-container" id="new_pass_h">
+                <i class="fa fa-unlock-alt icon"></i>
+                <input class="input-field" type="password" placeholder="Set New Password" id="new_pass">
+            </div>
+
+            <p class="error"></p>
+
+            <input type="submit" class="button" value="FIND USER">
+            <!-- If found change to RESET and show hidden field -->
+            <br>
+            <a class="log_l" onclick="login_go()">Already have an account? Login.</a>
+        </div>
+    </div>
+
+
 </body>
 
 </html>

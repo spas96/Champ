@@ -29,6 +29,8 @@
 </head>
 
 <body class="p-login">
+    <div id="loader"></div>
+
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header d-flex justify-content-center">
@@ -47,7 +49,7 @@
 
                     <div class="input-container">
                         <i class="fa fa-user icon"></i>
-                        <input class="input-field" type="text" placeholder="Username" id="username_id">
+                        <input class="input-field" type="text" placeholder="Email" id="email_id">
                     </div>
                     <div class="input-container">
                         <i class="fa fa-unlock-alt icon"></i>
@@ -56,7 +58,7 @@
 
                     <p class="error">Aasdasd asdasda ss asd.</p>
 
-                    <input type="submit" class="button" value="LOGIN" onclick="login()">
+                    <input type="submit" class="button" value="LOGIN" onclick="login(database())">
                     <div class="mar">
                         <a class="log_l" onclick="reset_pass_go()">Forgot your password?</a>
                     </div>
@@ -86,7 +88,7 @@
 
                     <div class="input-container">
                         <i class="fa fa-user icon"></i>
-                        <input class="input-field" type="text" placeholder="Username" id="username_id_reg">
+                        <input class="input-field" type="text" placeholder="Email" id="email_id_reg">
                     </div>
                     <div class="input-container">
                         <i class="fa fa-unlock-alt icon"></i>
@@ -108,11 +110,11 @@
 
                     <div class="input-container">
                         <i class="fa fa-user icon"></i>
-                        <input class="input-field" type="text" placeholder="Username" id="username_id">
+                        <input class="input-field" type="text" placeholder="Email" id="email_id_res">
                     </div>
                     <div class="input-container">
                         <i class="fa fa-retweet icon"></i>
-                        <input class="input-field" type="password" placeholder="Memorable Word" id="password_id">
+                        <input class="input-field" type="password" placeholder="Memorable Word" id="password_id_res">
                     </div>
                     <div class="input-container" id="new_pass_h">
                         <i class="fa fa-unlock-alt icon"></i>
@@ -149,9 +151,14 @@
     <script src="../plugins/node-waves/waves.js"></script>
 
     <!-- Custom Js -->
-    <script src="../js/admin.js"></script>
+    <script src="../js/login.js"></script>
+    <script type="text/javascript" src="../js/firebase_connect.js"></script>
 
-    <script src="../js/pages/login.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+
+    <script src="../js/admin.js"></script>
 </body>
 
 </html>
