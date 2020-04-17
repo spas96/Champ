@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Cooking</title>
+   <link rel="icon" href="Images/FavIcon.png">
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+   
+   <script type="text/javascript" src="firebase_connect.js"></script>
+   <script type="text/javascript" src="cooking.js"></script>
+   
+   
+
+   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+   
+   <script>
+      database().auth().onAuthStateChanged(function(user) {
+        if (!user) {
+          window.location.href = "login.html";
+        }
+      });
+   </script>
+
+</head>
+
+<body onload="user();database();done();set_timer();set_time(database());">
+   <div id="loader"></div>
+   <header>
+      <div align="left" id="h_left">
+         <img src="Images/logo.png" alt="Champ Logo" id="logo2">
+      </div>
+      <div align="center" id="h_center">
+         <div class="dropdown">
+            <h2 id="drd_sel" class="dropbtn">Meat/Fish<i class='fa fa-chevron-down'></i></h2>
+            <div align="center" class="dropdown-content-mid">
+               <a class="task-chose">Check List</a>
+               <a class="task-chose" onclick="document.getElementById('drd_sel').innerHTML='Meat/Fish<i class=\'fa fa-chevron-down\'></i>';set_time(database(),this);">Meat/Fish</a>
+               <a class="task-chose" onclick="document.getElementById('drd_sel').innerHTML='Vegetable<i class=\'fa fa-chevron-down\'></i>';set_time(database(),this);">Vegetable</a>
+               <a class="task-chose" onclick="document.getElementById('drd_sel').innerHTML='Sauce<i class=\'fa fa-chevron-down\'></i>';set_time(database(),this);">Sauce</a>
+               <a class="task-chose" onclick="document.getElementById('drd_sel').innerHTML='Cooking<i class=\'fa fa-chevron-down\'></i>';set_time(database(),this);">Cooking</a>
+            </div>
+         </div>
+      </div>
+      <div align="right" id="h_right">
+         <div class="dropdown">
+            <h3 class="dropbtn" id="user_name"></h3>
+            <div align="center" class="dropdown-content">
+               <a class="user-dd" href="#"><i class="fa fa-cog "></i> Settings</a>
+               
+               <a class="user-dd" id="logout" href="#"  onclick="logout(database());"><i class="fa fa-sign-out"></i> Logout</a>
+            </div>
+         </div>
+      </div>
+   </header>
+   
+   <div id="times" align=" left">
+      <div id="time">
+         <h2 id="time_e"></h2>
+      </div>
+      <div id="date" class="row">
+         <div class="column"><i class='fa fa-chevron-left date_arr' onclick='change_date(0,database());'></i>
+         </div>
+         <div class="column"><p id="date_e"></p>
+         </div>
+         <div class="column"><i class="fa fa-chevron-right date_arr" onclick="change_date(1,database());"></i>
+         </div>
+         
+         
+         
+         
+      </div>
+      <div id="timer">
+         <audio id="alarm">
+            <source src="alarm.wav" type="audio/wav">
+         </audio>
+         <div class="timer_div" id="timer_h">
+            <i class="fa fa-plus but_timer"></i>
+            <p class="timer">00</p>
+            <i class="fa fa-minus but_timer"></i>
+         </div>
+         <div class="timer_div_sep">:
+         </div>
+         <div class="timer_div" id="timer_min">
+            <i class="fa fa-plus but_timer"></i>
+            <p class="timer">00</p>
+            <i class="fa fa-minus but_timer"></i>
+         </div>
+         <div class="timer_div_sep">:
+         </div>
+         <div class="timer_div" id="timer_sec">
+            <i class="fa fa-plus but_timer"></i>
+            <p class="timer">00</p>
+            <i class="fa fa-minus but_timer"></i>
+         </div>
+         
+         <input type="submit" id="but_start" value="START" onclick="start_timer()">
+      </div>
+   </div>
+   
+   <div id="prep">
+      <h1 id="empty">No tasks alocated.</h1>
+      <div id="board" class="row">
+         <div id="left_b" class="column">
+            <div id="readytocook" style="padding-left:10%;display:none;">
+               <h3>Select Tray or Hob:</h3>
+               <select id="trayorhob">
+                  <option value="Tray">Tray</option>
+                  <option value="Hob">Hob</option>
+               </select>
+               
+               <h3>Select Meals:</h3>
+               <table id="meals_table" cellpadding="10">
+               </table>
+               <br>
+               <input type="checkbox" id="timerr" name="timer" value="timer">
+               <label style="margin-bottom: 30px;"> Select if you want to start a timer.</label><br><br>
+               <div id="timer_meal" style="display: none;">
+                  <div id="timer">
+                     <audio id="alarm">
+                        <source src="alarm.wav" type="audio/wav">
+                     </audio>
+                     <div class="timer_div" id="timer_h">
+                        <i class="fa fa-plus but_timer"></i>
+                        <p class="timer" id="t_h">00</p>
+                        <i class="fa fa-minus but_timer"></i>
+                     </div>
+                     <div class="timer_div_sep">:
+                     </div>
+                     <div class="timer_div" id="timer_min">
+                        <i class="fa fa-plus but_timer"></i>
+                        <p class="timer" id="t_m">00</p>
+                        <i class="fa fa-minus but_timer"></i>
+                     </div>
+                     <div class="timer_div_sep">:
+                     </div>
+                     <div class="timer_div" id="timer_sec">
+                        <i class="fa fa-plus but_timer"></i>
+                        <p class="timer" id="t_s">00</p>
+                        <i class="fa fa-minus but_timer"></i>
+                     </div>
+                     
+                  </div>
+               </div>
+               
+               <input type="submit" id="but_cook" value="SUBMIT" onclick="cook(database())">
+            </div>
+            <ul id="ingredients_need">
+            </ul>            
+         </div>
+         <div id="timers">
+         </div>
+         <div id="right_b" class="column">
+         </div>
+      </div>
+   </div>
+   
+   
+   
+   
+</body>
+
+</html>

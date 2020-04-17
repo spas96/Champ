@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Champ | Checklist</title>
+    <link rel="icon" href="Images/FavIcon.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap Core Css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="text/javascript" src="firebase_connect.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+
+    <script>
+        database().auth().onAuthStateChanged(function(user) {
+            if (!user) {
+                window.location.href = "login.html";
+            }
+        });
+    </script>
+
+</head>
+
+<body class="p-checklist" onload="user();database();done();get_meals(database())">
+    <div id="loader"></div>
+
+    <header>
+        <div align="left" id="h_left">
+            <img src="Images/Logo.jpg" alt="Champ Logo" id="logo2">
+        </div>
+        <div align="center" id="h_center">
+            <div class="dropdown">
+                <h2 class="dropbtn">Meals <i class="fa fa-chevron-down"></i></h2>
+                <div align="center" class="dropdown-content-mid">
+                    <a class="task-chose">Check List</a>
+                    <a class="task-chose">Some</a>
+                    <a class="task-chose">Stuff</a>
+                    <a class="task-chose">In Menu</a>
+                </div>
+            </div>
+        </div>
+        <div align="right" id="h_right">
+            <div class="dropdown">
+                <h3 class="dropbtn" id="user_name"></h3>
+                <div align="center" class="dropdown-content">
+                    <a class="user-dd" href="#"><i class="fa fa-cog "></i> Settings</a>
+
+                    <a class="user-dd" id="logout" href="#" onclick="logout(database());"><i class="fa fa-sign-out"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="checklist" style="margin-top: 300px;">
+        <form action="">
+            <div class="task__list">
+                <label for="task--1" class="task"><input class="task__check" type="checkbox" id="task--1" /> <div class="task__field task--row"> Task number one<button class="task__important"><i class="fa fa-check" aria-hidden="true"></i></button></div></label>
+                <label for="task--2" class="task"><input class="task__check" type="checkbox" id="task--2" /> <div class="task__field task--row"> Second Task<button class="task__important"><i class="fa fa-check" aria-hidden="true"></i></button></div></label>
+                <label for="task--3" class="task"><input class="task__check" type="checkbox" id="task--3" /> <div class="task__field task--row"> Third task<button class="task__important"><i class="fa fa-check" aria-hidden="true"></i></button></div></label>
+                <label for="task--4" class="task"><input class="task__check" type="checkbox" id="task--4" /> <div class="task__field task--row"> Task number four<button class="task__important"><i class="fa fa-check" aria-hidden="true"></i></button></div></label>
+            </div>
+            <div class="task--row task__footer">
+
+                <input class="task__add" type="text" value="+ add new task">
+            </div>
+        </form>
+    </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Jquery Core Js -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- Custom Js -->
+    <script src="js/admin.js"></script>
+
+</body>
+
+</html>

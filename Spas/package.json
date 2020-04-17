@@ -1,0 +1,12 @@
+{
+    "name": "adminbsb-materialdesign",
+    "version": "1.0.7",
+    "description": "Champ",
+    "main": "js/admin.js",
+    "scripts": {},
+    "repository": {
+        "type": "git"
+    },
+    "author": "KN",
+    "license": "MIT"
+}

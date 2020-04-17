@@ -1,0 +1,19 @@
+{
+    "name": "adminbsb-materialdesign",
+    "version": "1.0.7",
+    "description": "Champ",
+    "main": "js/admin.js",
+    "authors": [
+        "KN"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "moduleType": [],
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}
