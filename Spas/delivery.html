@@ -1,86 +1,85 @@
 <!DOCTYPE html>
 <html>
-<head>
-   <meta charset="UTF-8">
-   <title>Champ</title>
-   <link rel="icon" href="Images/FavIcon.png">
-   <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   
-   
-   <script type="text/javascript" src="firebase_connect.js"></script>
-   <script type="text/javascript" src="delivery.js"></script>
-   
-   
 
-   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
-   
-   <script>
-      database().auth().onAuthStateChanged(function(user) {
-        if (!user) {
-          window.location.href = "login.html";
-        }
-      });
-   </script>
+<head>
+    <meta charset="UTF-8">
+    <title>Champ</title>
+    <link rel="icon" href="Images/FavIcon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="firebase_connect.js"></script>
+    <script type="text/javascript" src="delivery.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+
+    <script>
+        database().auth().onAuthStateChanged(function(user) {
+            if (!user) {
+                window.location.href = "login.html";
+            }
+        });
+    </script>
 
 </head>
 
 <body onload="load(database());">
-   <div id="loader"></div>
-   <header>
-      <div align="left" id="h_left">
-         <img src="Images/logo.png" alt="Champ Logo" id="logo2">
-      </div>
-      <div align="center" id="h_center">
-         <div class="dropdown">
-            <h2  class="dropbtn">Delivery/Stock<i class="fa fa-chevron-down"></i></h2>
-            <div align="center" class="dropdown-content-mid">
-               <a class="task-chose">Check List</a>
-               <a class="task-chose">Select Meals</a>
-               <a class="task-chose">Stuff</a>
-               <a class="task-chose">In Menu</a>
+    <div id="loader"></div>
+    <header>
+        <div id="h_left">
+            <img src="Images/logo.png" alt="Champ Logo" id="logo2">
+        </div>
+        <div id="h_center">
+            <div class="dropdown">
+                <h2 class="dropbtn">Delivery/Stock<i class="fa fa-chevron-down"></i></h2>
+                <div align="center" class="dropdown-content-mid">
+                    <a class="task-chose" href="admin.html">Admin</a>
+                    <a class="task-chose" href="index.html">Add Meal</a>
+                    <a class="task-chose" href="cooking.html">Cooking</a>
+                    <a class="task-chose" href="check_list.html">Check List</a>
+                    <a class="task-chose" href="meal_select.html">Select Meal</a>
+                </div>
             </div>
-         </div>
-      </div>
-      <div align="right" id="h_right">
-         <div class="dropdown">
-            <h3 class="dropbtn" id="user_name"></h3>
-            <div align="center" class="dropdown-content">
-               <a class="user-dd" href="#"><i class="fa fa-cog "></i> Settings</a>
-               
-               <a class="user-dd" id="logout" href="#"  onclick="logout(database());"><i class="fa fa-sign-out"></i> Logout</a>
-            </div>
-         </div>
-      </div>
-   </header>
-   <div id="content">
-      <div id="left" style="margin-top: 150px;">
-         <h1 style="text-align:center;">Stock</h1>
-         <div id="stock_list" style="padding:50px;font-size:25px;"></div>
-      </div>
-      
-      <div id="right" align="center" style="margin-top:150px;">
-         <h1 style="text-align:center;">Delivery</h1>
-         
-         <label>Ingredient</label>
-         <input type="text" id="ingredients">
-         <br>
-         <br>
-         <label>Amount</label>
-         <input type="text" id="amount">
-         <br>
-         <br>
-         <label>Units</label>
-         <input type="text" id="units">
-         <br>
-         <br>
-         <input type="submit" id="but_cook" value="ADD" onclick="add(database());">
-      </div>
+        </div>
+        <div id="h_right">
+            <div class="dropdown">
+                <h3 class="dropbtn" id="user_name"></h3>
+                <div align="center" class="dropdown-content">
+                    <a class="user-dd" href="#"><i class="fa fa-cog "></i> Settings</a>
 
-   </div>
-   
+                    <a class="user-dd" id="logout" href="#" onclick="logout(database());"><i class="fa fa-sign-out"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="content">
+        <div id="left" style="margin-top: 150px;">
+            <h1 style="text-align:center;">Stock</h1>
+            <div id="stock_list" style="padding:50px;font-size:25px;"></div>
+        </div>
+
+        <div id="right" align="center" style="margin-top:150px;">
+            <h1 style="text-align:center;">Delivery</h1>
+
+            <label>Ingredient</label>
+            <input type="text" id="ingredients">
+            <br>
+            <br>
+            <label>Amount</label>
+            <input type="text" id="amount">
+            <br>
+            <br>
+            <label>Units</label>
+            <input type="text" id="units">
+            <br>
+            <br>
+            <input type="submit" id="but_cook" value="ADD" onclick="add(database());">
+        </div>
+
+    </div>
+
 </body>
 
 </html>

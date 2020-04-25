@@ -206,7 +206,7 @@ function authenticate(database,err,email,pass){
                   });
                });
                document.getElementById("loader").style.display = "none";
-               window.location.href = "index.html";
+               window.location.href = "check_list.html";
             }
          });
       });

@@ -30,6 +30,15 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
+    
+    <script type="text/javascript" src="firebase_connect.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
+   
+   
+
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
 </head>
 
 <body>
@@ -49,6 +58,7 @@
             <p>Please wait...</p>
         </div>
     </div>
+    <div id="loader"></div>
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
@@ -95,9 +105,32 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="cooking.html">
                             <i class="material-icons">home</i>
                             <span>Home</span>
+                        </a>
+                        <a href="index.html">
+                            <i class="material-icons">check_box</i>
+                            <span>Chek List</span>
+                        </a>
+                        <a onclick="users(database());">
+                            <i class="material-icons">people</i>
+                            <span>Users</span>
+                        </a>
+                    
+                        <a href="index.html">
+                            <i class="material-icons">notes</i>
+                            <span>Recipies</span>
+                        </a>
+                    
+                        <a href="index.html">
+                            <i class="material-icons">kitchen</i>
+                            <span>Appliences</span>
+                        </a>
+                    
+                        <a href="index.html">
+                            <i class="material-icons">how_to_reg</i>
+                            <span>Permissions</span>
                         </a>
                     </li>
 
@@ -113,7 +146,18 @@
             <div class="block-header">
                 <h2>DASHBOARD</h2>
             </div>
+            <div id="users" style="display:none;">
+               <h3>New Requests</h3>
+               <div id="new_req">
+                 
+               </div>
+               <h3>Users</h3>
+               <div class="left_">
+               </div>
 
+               <div class="right_" style="text-align: center;">
+               </div>
+            </div>
         </div>
     </section>
 

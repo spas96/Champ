@@ -5,11 +5,13 @@ body {
 
 header {
     position: fixed;
-    padding: 1%;
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     left: 0;
     top: 0;
     background-color: white;
+    z-index: 999;
 }
 
 #logo {
@@ -20,24 +22,19 @@ header {
 }
 
 #logo2 {
-    width: 37%;
-    left: 0;
+    max-width: 100%;
+    vertical-align: top;
+    -webkit-transition: all .3s;
+    transition: all .3s;
 }
 
 #h_left {
-    float: left;
-    width: 25%;
-}
-
-#h_center {
-    float: left;
-    width: 50%;
+    width: 145px;
+    padding: 12px;
 }
 
 #h_right {
-    float: left;
-    width: 23%;
-    margin-right: 2%;
+    margin-right: 20px;
 }
 
 .user-dd {
@@ -57,7 +54,9 @@ header {
 }
 
 .dropdown {
+    position: relative;
     display: inline-block;
+    z-index: 999;
 }
 
 .dropdown-content {
@@ -75,7 +74,6 @@ header {
     background-color: #f9f9f9;
     min-width: 350px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
     margin-left: -100px;
 }
 
@@ -519,16 +517,37 @@ header {
     padding-right: 10px;
 }
 
-#times {
-    margin-top: 6%;
+
+/* Cooking Page CSS */
+
+.c-cooking__times {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
 }
 
-#time {
-    float: left;
+.c-cooking__time {
+    width: 100px;
 }
 
-#timer {
-    float: right;
+.c-cooking__date {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    justify-content: center;
+    padding-left: 125px;
+}
+
+.c-cooking__date .column:nth-child(2) {
+    margin: 0 20px;
+}
+
+.c-cooking__date .column:nth-child(2) p {
+    font-weight: bold;
+}
+
+.c-cooking__task {
+    text-align: center;
 }
 
 .timer_div {
