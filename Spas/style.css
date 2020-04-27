@@ -449,11 +449,20 @@ header {
 
 #meals {
     display: flex;
+    justify-content: center;
+    padding: 0 54px;
 }
 
 #meals_left {
     width: calc(45% - 26px);
     border: 3px solid silver;
+}
+
+#meals_left h2 {
+    border-bottom: 3px solid silver;
+    padding: 16px 0;
+    margin: 0;
+    background-color: white;
 }
 
 .sub>div {
@@ -463,8 +472,9 @@ header {
 }
 
 .sub {
-    height: 400px;
+    height: 416px;
     overflow: auto;
+    background: white;
 }
 
 #meals_center {
@@ -477,6 +487,13 @@ header {
     width: calc(45% - 26px);
     overflow: auto;
     border: 3px solid silver;
+}
+
+#meals_right h2 {
+    border-bottom: 3px solid silver;
+    padding: 16px 0;
+    margin: 0;
+    background-color: white;
 }
 
 .button_arr {
@@ -595,7 +612,7 @@ header {
 }
 
 .selected_meal {
-    margin-top: 100px;
+    margin: 100px 0;
 }
 
 
@@ -724,4 +741,28 @@ input {
     background: none;
     width: 100%;
     color: white;
+}
+
+
+/* Delivery Page */
+
+.c-delivery__content {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 80px;
+}
+
+
+/* Responsive */
+
+@media only screen and (max-width: 1024px) {
+    #meals {
+        padding: 0 30px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #meals {
+        padding: 0 18px;
+    }
 }
