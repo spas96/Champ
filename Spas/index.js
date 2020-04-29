@@ -227,7 +227,7 @@ function nosymbol(event){
 
 function add_ingr(){
    if(document.getElementById("ingr_name").value != ""){   
-      if(document.getElementById("ingr_amaont").value != "" && !isNaN(document.getElementById("ingr_amount").value)){
+      if(document.getElementById("ingr_amount").value != "" && !isNaN(document.getElementById("ingr_amount").value)){
          if(document.getElementById("ingr_units").value != ""){
             document.getElementById("ingr_all").innerHTML += 
             document.getElementById("ingr_name").value + " - " + 

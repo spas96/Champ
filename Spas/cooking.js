@@ -769,7 +769,7 @@ function cooking(database){
             var last_time = parseInt(child.child("time").val().split(":")[0]) * 3600 + parseInt(child.child("time").val().split(":")[1]) * 60 + parseInt(child.child("time").val().split(":")[2]);
             var now = parseInt(d.getHours()) * 3600 + parseInt(d.getMinutes()) * 60 + parseInt(d.getSeconds());
             var timer = parseInt(child.child("timer").val().split(":")[0]) * 3600 + parseInt(child.child("timer").val().split(":")[1]) * 60 + parseInt(child.child("timer").val().split(":")[2]);
-            alert(timer > now - last_time);
+
             if(timer > now - last_time){
                var h = parseInt((timer - (now - last_time)) / 3600);
                var m = parseInt((timer - (now - last_time)) / 60) - (h * 60);
@@ -852,8 +852,7 @@ function run_timers(id,h,m,s,database) {
                audio.pause();
                audio.currentTime = 0;
                audio.play();
-               el.innerHTML = "FINISHED"
-               alert("Please check " + id.split("_")[0] + ".");
+               el.innerHTML = "Please Check!";
                el.remove();
                document.getElementById(id.split("_")[0] + "_h").remove();
                
@@ -907,7 +906,8 @@ function cook(database){
       var h = document.getElementById("t_h").innerHTML;
       var m = document.getElementById("t_m").innerHTML;
       var s = document.getElementById("t_s").innerHTML;
-      alert(h + " " + m + " " + s);
+      
+      document.getElementById("timers").innerHTML = "";
       
       ref1 = database.database().ref("Timers");
       
@@ -924,10 +924,16 @@ function cook(database){
          //if(!snapshot.exists()){
             ref1.child(name).child("time").set(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
             ref1.child(name).child("timer").set(h + ":" + m + ":" + s);
+            
+            h = "00";
+            m = "00";
+            s = "00";
          //}
       });
       
-      // reset timer
+      
+      
+      
    }
      
 }

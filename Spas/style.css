@@ -766,3 +766,23 @@ input {
         padding: 0 18px;
     }
 }
+
+#right_b{
+   margin-left:57.5%;
+   position:absolute;
+   overflow: auto;
+   width: 35%;
+   height: 70%;
+   margin-top: 50px;
+   text-align: center;
+}
+
+#timers {
+   width: 20%;
+   height: 75%;
+   position: absolute;
+   left: calc(40% - 20px);
+   text-align: center;
+   font-size: 24px;
+   padding: 20px;
+}
