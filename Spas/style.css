@@ -367,12 +367,25 @@ header {
 }
 
 #right-sub {
-    margin-left: 7.5%;
+    margin-left: -276px;
     position: absolute;
+    left: 50%;
     overflow: auto;
     width: 35%;
     height: 70%;
     z-index: -1;
+}
+
+@media only screen and (max-width: 1024px) {
+    #right-sub {
+        margin-left: -180px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #right-sub {
+        margin-left: -152px;
+    }
 }
 
 .meal {
@@ -767,22 +780,22 @@ input {
     }
 }
 
-#right_b{
-   margin-left:57.5%;
-   position:absolute;
-   overflow: auto;
-   width: 35%;
-   height: 70%;
-   margin-top: 50px;
-   text-align: center;
+#right_b {
+    margin-left: 57.5%;
+    position: absolute;
+    overflow: auto;
+    width: 35%;
+    height: 70%;
+    margin-top: 50px;
+    text-align: center;
 }
 
 #timers {
-   width: 20%;
-   height: 75%;
-   position: absolute;
-   left: calc(40% - 20px);
-   text-align: center;
-   font-size: 24px;
-   padding: 20px;
+    width: 20%;
+    height: 75%;
+    position: absolute;
+    left: calc(40% - 20px);
+    text-align: center;
+    font-size: 24px;
+    padding: 20px;
 }
